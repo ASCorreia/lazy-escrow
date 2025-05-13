@@ -19,4 +19,9 @@ pub mod lazy_escrow {
 
         Ok(())
     }
+
+    pub fn refund(ctx: Context<Refund>) -> Result<()> {
+        ctx.accounts.refund_to_maker()?;
+        ctx.accounts.close_vault()
+    }
 }
