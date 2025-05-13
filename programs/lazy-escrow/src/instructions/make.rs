@@ -18,7 +18,7 @@ pub struct Maker<'info>{
         associated_token::mint = token_a,
         associated_token::authority = maker,
     )]
-    pub ata_token_a: Account<'info, TokenAccount>,
+    pub ata_maker_token_a: Account<'info, TokenAccount>,
     #[account(
         init,
         payer = maker,
@@ -60,7 +60,7 @@ impl<'info> Maker<'info> {
         let cpi_program = self.token_program.to_account_info();
 
         let cpi_accounts = Transfer {
-            from: self.ata_token_a.to_account_info(),
+            from: self.ata_maker_token_a.to_account_info(),
             to: self.vault_token_a.to_account_info(),
            
             authority: self.maker.to_account_info(),
@@ -69,6 +69,7 @@ impl<'info> Maker<'info> {
         let cpi_ctx = CpiContext::new(cpi_program, cpi_accounts);
 
         let amount_a = self.escrow.load_amount_a()?;
+
         transfer(cpi_ctx, *amount_a)?;
 
         Ok(())
