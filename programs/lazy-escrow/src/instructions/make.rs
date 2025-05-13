@@ -5,7 +5,7 @@ pub use anchor_spl::{
     token::{Mint, Token, TokenAccount, Transfer, transfer},
 };
 
-use crate::state::Escrow;
+use crate::state::{Escrow, LazyEscrow};
 
 #[derive(Accounts)]
 pub struct Maker<'info>{
@@ -68,7 +68,8 @@ impl<'info> Maker<'info> {
 
         let cpi_ctx = CpiContext::new(cpi_program, cpi_accounts);
 
-        transfer(cpi_ctx, self.escrow.load_amount_a()?)?;
+        let amount_a = self.escrow.load_amount_a()?;
+        transfer(cpi_ctx, *amount_a)?;
 
         Ok(())
     }
