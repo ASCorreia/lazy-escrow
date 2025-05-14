@@ -2,10 +2,19 @@ pub use anchor_lang::prelude::*;
 pub use anchor_lang::accounts::lazy_account::LazyAccount;
 pub use anchor_spl::{
     associated_token::AssociatedToken, 
-    token::{Mint, Token, TokenAccount, Transfer, transfer},
+    token::{
+        Mint, 
+        Token, 
+        TokenAccount, 
+        Transfer, 
+        transfer
+    },
 };
 
-use crate::state::{Escrow, LazyEscrow};
+use crate::state::{
+    Escrow, 
+    LazyEscrow
+};
 
 #[derive(Accounts)]
 pub struct Maker<'info>{

@@ -1,7 +1,21 @@
 use anchor_lang::prelude::*;
-use anchor_spl::{associated_token::AssociatedToken, token::{close_account, transfer, CloseAccount, Mint, Token, TokenAccount, Transfer}};
+use anchor_spl::{
+    associated_token::AssociatedToken, 
+    token::{
+        close_account, 
+        transfer, 
+        CloseAccount, 
+        Mint, 
+        Token, 
+        TokenAccount, 
+        Transfer
+    }}
+    ;
 
-use crate::state::{Escrow, LazyEscrow};
+use crate::state::{
+    Escrow, 
+    LazyEscrow
+};
 
 #[derive(Accounts)]
 pub struct Refund<'info> {
