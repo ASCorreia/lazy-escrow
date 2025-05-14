@@ -15,8 +15,7 @@ pub struct Refund<'info> {
     )]
     pub ata_maker_token_a: Account<'info, TokenAccount>,
     #[account(
-        init,
-        payer = maker,
+        mut,
         associated_token::mint = token_a,
         associated_token::authority = escrow,
     )]
