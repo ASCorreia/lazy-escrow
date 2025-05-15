@@ -23,7 +23,7 @@ pub struct Taker<'info>{
     #[account(mut)]
     pub taker: Signer<'info>,
     #[account(mut)]
-    pub maker: Signer<'info>,
+    pub maker: SystemAccount<'info>,
     pub token_a: Account<'info, Mint>,
     pub token_b: Account<'info, Mint>,
     #[account(
@@ -40,7 +40,7 @@ pub struct Taker<'info>{
     pub ata_maker_token_a: Account<'info, TokenAccount>,
     #[account(
         init_if_needed,
-        payer = maker,
+        payer = taker,
         associated_token::mint = token_b,
         associated_token::authority = maker,
     )]
