@@ -1,6 +1,6 @@
 pub use anchor_lang::prelude::*;
 
-#[account]
+#[account(discriminator = 1)]
 pub struct Escrow {
     pub maker: Pubkey,
     pub token_a: Pubkey,
