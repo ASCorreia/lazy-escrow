@@ -11,5 +11,5 @@ pub struct Escrow {
 }
 
 impl Space for Escrow {
-    const INIT_SPACE: usize = 8 + 32 + 32 + 32 + 8 + 8 + 1;
+    const INIT_SPACE: usize = 1 + 32 + 32 + 32 + 8 + 8 + 1;
 }
