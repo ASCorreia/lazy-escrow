@@ -114,7 +114,6 @@ describe("lazy-escrow", () => {
       tokenA: mintA,
       tokenB: mintB,
       vaultTokenA: vault,
-      ataMakerTokenA: userAtaA,
       ataMakerTokenB: userAtaB,
       ataTakerTokenA: takerAtaA,
       ataTakerTokenB: takerAtaB,

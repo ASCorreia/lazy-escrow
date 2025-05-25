@@ -33,12 +33,6 @@ pub struct Taker<'info>{
     )]
     pub vault_token_a: Account<'info, TokenAccount>,
     #[account(
-        mut,
-        associated_token::mint = token_a,
-        associated_token::authority = maker,
-    )]
-    pub ata_maker_token_a: Account<'info, TokenAccount>,
-    #[account(
         init_if_needed,
         payer = taker,
         associated_token::mint = token_b,
@@ -97,7 +91,7 @@ impl<'info> Taker<'info> {
 
         let cpi_accounts = Transfer {
             from: self.vault_token_a.to_account_info(),
-            to: self.ata_maker_token_a.to_account_info(),
+            to: self.ata_taker_token_a.to_account_info(),
             authority: self.escrow.to_account_info(),
         };
 
