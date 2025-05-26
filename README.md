@@ -141,7 +141,7 @@ impl<'info> Maker<'info> {
 
 In the `init_escrow` function, we initialize the escrow account. In this case, as we are using the `LazyAccount`, we need to use the `load_mut` method to deserialize the account and set the data content.
 
-In the `transfer_token_a` function, we transfer tokens from the maker's associated token account to the vault account. In this case, for reading a individual data field in the escrow account, we use the `load_<field>` method of the `LazyAccount`.
+In the `transfer_token_a` function, we transfer tokens from the maker's associated token account to the vault account. In this case, for reading a individual data field in the escrow account, we use the `load_<field>` method of the `LazyAccount`. The lazy account allow us to not load the entire account, saving us some memory and compute units.
 
 ---
 
