@@ -39,6 +39,8 @@ pub struct Refund<'info> {
         close = maker,
         seeds = [b"escrow", maker.key().as_ref()],
         bump = *(escrow.load_bump()?),
+        has_one = maker,
+        has_one = token_a
     )]
     pub escrow: LazyAccount<'info, Escrow>,
     pub token_program: Program<'info, Token>,
